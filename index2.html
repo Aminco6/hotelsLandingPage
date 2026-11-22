@@ -18,7 +18,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:calc(14px + env(safe
 .lg{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#1a3a6e,#0e2552);border:1.5px solid rgba(255,160,0,.45);display:grid;place-items:center}
 .nl{display:flex;align-items:center;gap:22px}.nl a:not(.sm){color:#cdd6e6;text-decoration:none;font-weight:600;font-size:.88rem}.nl a:not(.sm):hover{color:#fff}
 .sm{white-space:nowrap;background:var(--amber);color:#1a1200;font-weight:800;font-size:.82rem;padding:10px 18px;border-radius:10px;text-decoration:none}
-@media(max-width:900px){.nl a:not(.sm){display:none}}
+@media(max-width:1060px){.nl a:not(.sm){display:none}}
 @media(max-width:480px){.logo{font-size:1.05rem}.sm{padding:10px 12px;font-size:.76rem}}
 section{padding:90px 5%}.alt{background:var(--navy2)}.in{max-width:1180px;margin:0 auto}
 .lbl{font-size:.7rem;color:var(--green);font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}.lbl::before{content:"";width:24px;height:2px;background:var(--green)}
@@ -127,7 +127,7 @@ html{overflow-x:clip}
 </head>
 <body id="top">
 <nav><a class="logo" href="#top" aria-label="Voddic Connect home"><div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M8 14.5a4 4 0 0 1 8 0M7 14.5h10M12 8.5v1.2"/></svg></div><span>Voddic <b>Connect</b></span></a>
-<div class="nl"><a href="#purpose">Why Connect</a><a href="#tour">App Tour</a><a href="#demo">Live Demo</a><a href="#directory" data-link="directory">Find a Hotel</a><a href="#hotels">For Hotels</a><a href="#faq">FAQ</a><a class="sm" data-link="register" href="https://connect.voddic.com.ng/">Register Your Hotel</a></div></nav>
+<div class="nl"><a href="#purpose">Why Connect</a><a href="#tour">App Tour</a><a href="#demo">Live Demo</a><a href="#directory" data-link="directory">Find a Hotel</a><a href="#hotels">For Hotels</a><a href="tutorial.html">Tutorial</a><a href="#faq">FAQ</a><a class="sm" data-link="register" href="https://connect.voddic.com.ng/auth/signup.htm">Register Your Hotel</a></div></nav>
 
 <!-- HERO -->
 <section class="hero"><div style="position:relative;z-index:1">
@@ -135,8 +135,8 @@ html{overflow-x:clip}
 <h1>One Scan.<br><span class="a">Every Service.</span><br><span class="g">No App.</span></h1>
 <p class="sub">Voddic Connect puts reception, housekeeping and emergency help on a QR code in every room. Guests just scan. Your team manages rooms, staff and alerts from one dashboard.</p>
 <div class="pills"><div class="pill"><i style="background:var(--green)"></i>No app install</div><div class="pill"><i style="background:var(--amber)"></i>QR code in every room</div><div class="pill"><i style="background:var(--red)"></i>Emergency alerts</div><div class="pill"><i style="background:var(--blue)"></i>Your hotel’s branding</div></div>
-<div class="cta"><a class="dl" data-link="register" href="https://connect.voddic.com.ng/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6"/></svg>Register Your Hotel</a><a class="ol" data-link="directory" href="https://connect.voddic.com.ng/">🔎 Find a Hotel</a></div>
-<p class="meta">Guests need no account · Works in any phone browser · Built in Lagos, Nigeria</p></div>
+<div class="cta"><a class="dl" data-link="register" href="https://connect.voddic.com.ng/auth/signup.html/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6"/></svg>Register Your Hotel</a><a class="ol" data-link="directory" href="https://connect.voddic.com.ng/auth/signup.html/">🔎 Find a Hotel</a></div>
+<p class="meta">Guests need no account · Works in any phone browser · Built by Voddic</p></div>
 <div class="hp" aria-hidden="true"><div class="ph l"><div class="im s-dash"></div></div><div class="ph r"><div class="im s-qr"></div></div><div class="ph m"><div class="im s-dir"></div></div></div></section>
 
 <div class="stats"><div class="stat rv"><b>0</b><small>APP INSTALLS FOR GUESTS</small></div><div class="stat rv"><b>1</b><small>QR CODE PER ROOM</small></div><div class="stat rv"><b>Live</b><small>ROOM AVAILABILITY</small></div><div class="stat rv"><b>1 tap</b><small>TO CALL RECEPTION</small></div></div>
@@ -152,7 +152,7 @@ html{overflow-x:clip}
 
 <!-- TOUR -->
 <section class="alt" id="tour"><div class="in"><div class="c"><div class="lbl">Inside the app</div><h2 class="ttl">Both sides, explained.</h2>
-<p class="sub">Real screens from Voddic Connect: what guests see, and what your hotel team uses. Swipe or use the arrows. Tap the centre phone to see it larger.</p></div>
+<p class="sub">Real screens from Voddic Connect: what guests see, and what your hotel team uses. Swipe or use the arrows. Tap the centre phone to see it larger.</p><p style="margin-top:22px"><a class="ol" href="tutorial.html">Open the full tutorial →</a></p></div>
 <div class="sl" role="region" aria-roledescription="carousel" aria-label="App screens"><button class="ar pv" id="pv" aria-label="Previous screen">‹</button><div class="trk" id="trk" tabindex="0">
 <div class="sd act" data-i="0"><div class="cat">👤 For Guests</div><div class="ph" tabindex="0" role="button" aria-label="Enlarge Hotel directory"><div class="im s-dir" role="img" aria-label="Hotel directory screen"></div></div><h3>Hotel Directory</h3><p>Search by hotel name or city, or tap Hotels Near Me. Each hotel card shows its photo, rating, location and how many rooms are open, with shortcuts to Rooms, Reviews and Scan.</p></div>
 <div class="sd" data-i="1"><div class="cat">👤 For Guests</div><div class="ph" tabindex="0" role="button" aria-label="Enlarge Live rooms"><div class="im s-grooms" role="img" aria-label="Live rooms screen"></div></div><h3>Live Rooms &amp; Prices</h3><p>See every room with its type, number of guests, price and whether it’s available. Call reception or email the hotel in one tap.</p></div>
@@ -221,7 +221,7 @@ html{overflow-x:clip}
 <section class="c fin alt"><div class="in"><div class="lbl">Get started</div><h2 class="ttl">Give every guest a faster<br><span class="a">way to reach you.</span></h2><p class="sub">Register your hotel, or search the directory as a guest.</p>
 <div class="cta"><a class="dl" data-link="register" href="https://connect.voddic.com.ng/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6"/></svg>Register Your Hotel</a><a class="ol" data-link="directory" href="https://connect.voddic.com.ng/">🔎 Find a Hotel</a></div></div></section>
 
-<footer><div><b style="color:#fff">Voddic <span class="a">Connect</span></b> · Hotel digital assistance</div><div><a href="#top">Home</a><a href="#directory" data-link="directory">Guest Directory</a><a href="#hotels" data-link="register">Register Your Hotel</a></div><div>© 2026 Voddic Ltd, Lagos, Nigeria.</div></footer>
+<footer><div><b style="color:#fff">Voddic <span class="a">Connect</span></b> · Hotel digital assistance</div><div><a href="#top">Home</a><a href="tutorial.html">Tutorial</a><a href="#directory" data-link="directory">Guest Directory</a><a href="#hotels" data-link="register">Register Your Hotel</a></div><div>© 2026 Voddic Ltd, Lagos, Nigeria.</div></footer>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Screen preview"><div class="ph"><div class="im" id="li" role="img" aria-label="Screen preview"></div></div><div class="lt"><h3 id="lh"></h3><p id="lp"></p><button class="lx" id="lc">Close</button></div></div>
 

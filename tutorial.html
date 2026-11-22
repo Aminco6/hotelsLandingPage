@@ -3,8 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SchoolGuard Controller – Tutorial</title>
-<meta name="description" content="Step-by-step tutorial for the SchoolGuard Controller Android app: setup, students, gate pickup, announcements and reports.">
+<title>Voddic Connect – Tutorial</title>
+<meta name="description" content="Step-by-step tutorial for Voddic Connect: register your hotel, add rooms and staff, print QR room cards, and help guests scan and connect.">
+<meta name="theme-color" content="#0b1426">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFA000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:dark;--navy:#0b1426;--navy2:#0e1c35;--blue:#4d8dff;--green:#35d07f;--amber:#FFA000;--gray:#8a9bb5;--card:rgba(255,255,255,.045);--bd:rgba(255,255,255,.1);--f:'Inter',system-ui,-apple-system,"Segoe UI",sans-serif;--sw:290px;--th:60px}
@@ -12,12 +14,13 @@
 html{scroll-behavior:smooth;overflow-x:clip}
 body{background:var(--navy);color:#fff;font-family:var(--f);padding-bottom:env(safe-area-inset-bottom,0px)}
 a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
 /* top bar */
 .top{position:fixed;top:0;left:0;right:0;height:calc(var(--th) + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 18px 0;z-index:100;display:flex;align-items:center;gap:14px;background:rgba(11,20,38,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd)}
 .bg{display:none;width:44px;height:44px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:#fff;font-size:1.3rem;cursor:pointer}
-.lg{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.1rem;text-decoration:none;letter-spacing:-.4px}.lg i{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#1a3a6e,#0e2552);border:1.5px solid rgba(255,160,0,.45);display:grid;place-items:center}.lg b{color:var(--amber)}
+.lg{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.1rem;text-decoration:none;letter-spacing:-.4px;white-space:nowrap}.lg i{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#1a3a6e,#0e2552);border:1.5px solid rgba(255,160,0,.45);display:grid;place-items:center}.lg b{color:var(--amber)}
 .tag{font-size:.7rem;font-weight:800;letter-spacing:1.5px;color:var(--green);border:1px solid rgba(53,208,127,.35);background:rgba(53,208,127,.08);border-radius:20px;padding:4px 12px}
-.sp{flex:1}.tl{display:flex;gap:10px}.tl a{text-decoration:none;font-weight:700;font-size:.82rem;padding:10px 16px;border-radius:10px;border:1px solid var(--bd)}.tl a.p{background:var(--amber);color:#1a1200;border-color:var(--amber)}
+.sp{flex:1}.tl{display:flex;gap:10px}.tl a{text-decoration:none;font-weight:700;font-size:.82rem;padding:10px 16px;border-radius:10px;border:1px solid var(--bd);white-space:nowrap}.tl a.p{background:var(--amber);color:#1a1200;border-color:var(--amber)}
 /* sidebar */
 .side{position:fixed;top:calc(var(--th) + env(safe-area-inset-top,0px));bottom:0;left:0;width:var(--sw);overflow:auto;background:var(--navy2);border-right:1px solid var(--bd);padding:16px 12px 40px;z-index:90;transition:transform .3s}
 .sr{width:100%;min-height:44px;border-radius:10px;border:1px solid var(--bd);background:#0b1426;color:#fff;padding:0 14px;font:inherit;font-size:.88rem;margin-bottom:14px}.sr:focus{outline:2px solid var(--amber)}
@@ -33,154 +36,144 @@ h1{font-size:clamp(1.8rem,3.4vw,2.6rem);letter-spacing:-1.2px;line-height:1.12;m
 .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:36px;align-items:start}.row.nop{grid-template-columns:minmax(0,1fr)}
 h2{font-size:1.05rem;margin:0 0 12px;letter-spacing:-.2px}
 .st{list-style:none;counter-reset:s;display:grid;gap:10px;margin-bottom:22px}.st li{counter-increment:s;display:flex;gap:14px;align-items:flex-start;line-height:1.6;color:#dbe3f1;font-size:.96rem}.st li::before{content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;background:rgba(77,141,255,.18);border:1px solid rgba(77,141,255,.4);display:grid;place-items:center;font-size:.78rem;font-weight:800;margin-top:1px}
-.tip{background:rgba(255,160,0,.08);border:1px solid rgba(255,160,0,.3);border-radius:14px;padding:14px 18px;line-height:1.65;font-size:.92rem;color:#ffe0a6;margin-bottom:26px}.tip b{color:var(--amber)}
-.phs{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}.ph{width:210px;background:#0a0f1e;border:2px solid rgba(255,255,255,.14);border-radius:30px;padding:6px;box-shadow:0 24px 60px rgba(0,0,0,.5)}.ph img{display:block;width:100%;border-radius:24px}
+.tip{background:rgba(255,160,0,.08);border:1px solid rgba(255,160,0,.3);border-radius:14px;padding:14px 18px;line-height:1.65;font-size:.92rem;color:#ffe0a6;margin-bottom:26px}.tip b{color:var(--amber)}.tip a{color:var(--amber);font-weight:700}
+.phs{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}.ph{width:210px;background:#0a0f1e;border:2px solid rgba(255,255,255,.14);border-radius:30px;padding:6px;box-shadow:0 24px 60px rgba(0,0,0,.5)}.ph img{display:block;width:100%;height:auto;border-radius:24px;aspect-ratio:720/1388;object-fit:cover;background:#0a0f1e}
 .vid{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#12264a,#0a1428);border:1px solid var(--bd);margin-top:6px}
 .vp{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--gray);font-weight:700;font-size:.9rem}
-.play{width:70px;height:70px;border-radius:50%;border:0;background:var(--amber);color:#1a1200;font-size:1.6rem;cursor:pointer;box-shadow:0 10px 30px rgba(255,160,0,.4);padding-left:5px}.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.play{width:70px;height:70px;border-radius:50%;border:0;background:var(--amber);color:#1a1200;font-size:1.6rem;cursor:pointer;box-shadow:0 10px 30px rgba(255,160,0,.4);padding-left:5px}.play[disabled]{opacity:.35;cursor:default;box-shadow:none}.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .vl{font-size:.82rem;color:var(--gray);margin:10px 0 30px;word-break:break-all}.vl a{color:var(--blue);font-weight:600}
+.novl{margin-bottom:30px}
 .pn{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;border-top:1px solid var(--bd);padding-top:26px}
 .pn a,.pn span{display:block;border:1px solid var(--bd);background:var(--card);border-radius:14px;padding:14px 18px;text-decoration:none;transition:.2s}.pn a:hover{border-color:var(--amber);transform:translateY(-2px)}.pn small{display:block;color:var(--gray);font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}.pn b{font-size:.95rem}.pn .nx{text-align:right}.pn span{opacity:.35}
 @media(max-width:1180px){.row{grid-template-columns:minmax(0,1fr)}.phs{justify-content:flex-start;margin-bottom:24px}}
 @media(max-width:900px){.bg{display:block}.side{transform:translateX(-100%);width:min(310px,86vw)}.side.open{transform:none;box-shadow:12px 0 40px rgba(0,0,0,.5)}.ov.on{display:block}.main{margin-left:0}.tag,.tl a:not(.p){display:none}}
-@media(max-width:520px){.pn{grid-template-columns:minmax(0,1fr)}.pn .nx{text-align:left}.ph{width:min(210px,62vw)}}
+@media(max-width:520px){.pn{grid-template-columns:minmax(0,1fr)}.pn .nx{text-align:left}.ph{width:min(210px,62vw)}.tl a.p{padding:10px 12px;font-size:.76rem}.lg{font-size:1rem}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <header class="top"><button class="bg" id="bg" aria-label="Open menu" aria-expanded="false">☰</button>
-<a class="lg" href="index.html"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFA000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 8h6M9 12h6M9 8v6"/></svg></i><span>School<b>Guard</b></span></a><span class="tag">TUTORIAL</span><span class="sp"></span>
-<nav class="tl"><a href="index.html">← Main site</a><a class="p" href="index.html#install">Download APK</a></nav></header>
+<a class="lg" href="index.html"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFA000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M8 14.5a4 4 0 0 1 8 0M7 14.5h10M12 8.5v1.2"/></svg></i><span>Voddic <b>Connect</b></span></a><span class="tag">TUTORIAL</span><span class="sp"></span>
+<nav class="tl" aria-label="Site links"><a href="index.html">← Main site</a><a class="p" data-link="register" href="https://connect.voddic.com.ng/">Register Your Hotel</a></nav></header>
 <div class="ov" id="ov"></div>
 <aside class="side" id="side" aria-label="Tutorial menu"><input class="sr" id="sr" type="search" placeholder="Search topics…" aria-label="Search topics"><div id="menu"></div></aside>
 <main class="main"><article class="art" id="art"><noscript>This tutorial needs JavaScript enabled.</noscript></article></main>
 
 <script>
+/* ===== LINKS (same two links as index.html) ===== */
+var LINKS={
+ directory:"https://connect.voddic.com.ng/",   /* guest hotel directory */
+ register:"https://connect.voddic.com.ng/"     /* hotel sign-up page: replace with your registration URL */
+};
+document.querySelectorAll("[data-link]").forEach(function(a){var u=LINKS[a.dataset.link];if(u&&/^https?:/.test(u)){a.href=u;a.target="_blank";a.rel="noopener"}});
+
 /* =====================================================================
    HOW TO ADD A TOPIC (it appears in the side menu automatically):
-   1. Copy the template below and paste it anywhere inside TOPICS = [ ... ]  (order = menu order = Next/Previous order)
-   2. Change group (a new group name creates a new menu section), id (unique, no spaces), title, text.
-   3. video: paste your YouTube link (watch, youtu.be or embed all work). Leave the XXXXXXXXXXX link until the video is ready.
-   4. imgs: screenshot names from assets/shots (without .jpg). Use [] for none.
+   1. Copy the template below and paste it anywhere inside TOPICS = [ ... ]
+      (order here = menu order = Next/Previous order). Put a comma after each topic.
+   2. Change group (a NEW group name creates a NEW menu section), id (unique, no spaces),
+      title, intro, steps and tip.
+   3. video: paste your YouTube link (watch, youtu.be, shorts or embed all work).
+      Leave it as V until the video is ready and the page shows "Video coming soon".
+   4. imgs: screenshot names from assets/shots without ".jpg"
+      (dashboard, rooms, staff, promotions, qr-cards, settings,
+       guest-directory, guest-rooms, guest-scan). Use [] for none.
+      To add a new screenshot, save it as assets/shots/my-screen.jpg and use "my-screen".
+   5. intro, steps and tip can contain simple HTML such as <b>bold</b>, or a link to another topic:
+      <a href='#/rooms'>Add rooms</a>. Keep the text inside double quotes and use single quotes
+      for anything inside it (like href='...'). Each topic needs a comma after its closing }.
 
-   {id:"my-topic", group:"Help", title:"My topic", imgs:["dashboard"],
-    intro:"Short explanation.", steps:["Step one.","Step two."], tip:"Optional tip.",
+   {id:"my-topic", group:"Hotel Setup", title:"My topic", imgs:["dashboard"],
+    intro:"Short explanation.",
+    steps:["Step one.","Step two."],
+    tip:"<b>Tip:</b> Optional tip. Leave as \"\" for none.",
     video:"https://www.youtube.com/watch?v=XXXXXXXXXXX"},
    ===================================================================== */
 var V="https://www.youtube.com/watch?v=XXXXXXXXXXX";
 var TOPICS=[
-{id:"welcome",group:"Getting Started",title:"Welcome to SchoolGuard Controller",imgs:["dashboard"],
- intro:"SchoolGuard Controller is an offline school safety system. One Android phone runs the app over your school’s own Wi-Fi to record arrivals and pick-ups, announce them by voice, and produce attendance reports. No internet and no monthly fees are needed.",
- steps:["An Android phone (Android 8.0 or newer) with the SchoolGuard app installed.","Your school’s local Wi-Fi network.","Optional hardware: fingerprint gate terminals (ESP32 + AS608) and wireless audio units (ESP32 + DFPlayer Mini).","Follow this tutorial from top to bottom: install, set up the school, add students and parents, then start using the gate."],
- tip:"<b>Tip:</b> You can use the app with PIN pick-up first and add fingerprint terminals and speakers later.",video:V},
-{id:"install",group:"Getting Started",title:"Install the app",imgs:[],
- intro:"The app is installed directly from an APK file, so you don’t need a Play Store account.",
- steps:["Open the SchoolGuard website on the phone you will use at the gate and register your school.","Tap Download APK. When Android asks, allow your browser to install unknown apps (a one-time setting).","Open the downloaded file and tap Install.","Connect the phone to the school Wi-Fi, open SchoolGuard and sign in."],
- tip:"<b>Safety:</b> Only install the APK from the official SchoolGuard page or from your school’s installer.",video:V},
-{id:"dashboard",group:"Getting Started",title:"Dashboard tour",imgs:["dashboard","quick-actions"],
- intro:"The Dashboard is your home screen. It shows what is happening in the school right now.",
- steps:["The top card shows your school name and whether the system is Online, plus today’s date, the school week and day (for example W9 · D1) and the time.","“Students in our custody right now” shows how many children are IN school and how many went home (OUT). Tap View log to see the details.","Use the colourful shortcuts to manage students, parents and attendance.","Quick Actions: Scan Parent, Send Announcement, Generate Report and Settings.","At a Glance shows total students, parents, children out today and connected devices."],
- tip:"<b>Tip:</b> Before the school opening time the dashboard shows “School opens at …” and starts recording as students arrive.",video:V},
+/* ---------------- GETTING STARTED ---------------- */
+{id:"welcome",group:"Getting Started",title:"Welcome to Voddic Connect",imgs:["guest-directory","dashboard"],
+ intro:"Voddic Connect links your guests to your hotel’s services with a QR code in every room. Guests scan and connect from their phone browser, with no app to install. Your team manages rooms, staff, alerts and promotions from one dashboard.",
+ steps:["Register your hotel.","Set up your hotel details in Hotel Settings.","Add your rooms.","Add your staff and mark your emergency responders.","Generate and print a QR card for every room.","Place one card in each room. Guests scan it to connect."],
+ tip:"<b>Tip:</b> Each page of this tutorial has a short video. Follow the pages from top to bottom the first time you set up.",video:V},
+{id:"register",group:"Getting Started",title:"Register your hotel",imgs:["guest-directory"],
+ intro:"Create your hotel’s account so you can sign in to the dashboard and appear in the guest directory.",
+ steps:["Open the Voddic Connect home page on any phone or computer.","Tap <b>Register your hotel here</b> next to “Are you a hotel owner?”.","Follow the registration form to create your hotel account.","Sign in. You will land on your hotel dashboard."],
+ tip:"<b>Next:</b> Open <a href='#/settings'>Hotel settings</a> and fill in your hotel’s name, phone and address.",video:V},
+{id:"dashboard",group:"Getting Started",title:"Dashboard tour",imgs:["dashboard"],
+ intro:"The dashboard is your home screen. It shows the state of your hotel at a glance.",
+ steps:["The top of the screen greets you and shows your hotel’s name.","The cards show Total Guests, Active Rooms, Vacant Rooms and emergencies. Scroll down to see them all.","If you have no rooms yet, tap <b>+ Add your first room</b> on a card.","Tap the ☰ button at the top left to open the menu and move between screens.","The bell at the top right opens your notifications."],
+ tip:"",video:V},
 
-{id:"school-profile",group:"School Setup",title:"School profile",imgs:["school-profile"],
- intro:"Your school’s name, motto and contact details. They appear across the app and on reports.",
- steps:["Go to More → School Profile.","Tap the pencil icon at the top right.","Enter the school name, motto, phone, email, address and country.","Save your changes."],tip:"",video:V},
-{id:"sessions",group:"School Setup",title:"Academic sessions",imgs:["sessions"],
- intro:"A session is a school year. All terms, classes and records belong to a session.",
- steps:["Go to More → Academic Sessions.","Tap + to add a new session, or Import CSV to load several at once.","The active session shows a CURRENT badge.","Use the pencil to edit or the bin to delete a session."],
- tip:"<b>Set up in this order:</b> Session → Terms → Classes → Students → Parents.",video:V},
-{id:"terms",group:"School Setup",title:"Terms management",imgs:["terms"],
- intro:"Create the terms for each session and choose which one is current. Attendance is always tied to the right term.",
- steps:["Go to More → Terms Management.","Pick the Academic Session at the top.","Tap + to add a term with its start and end dates.","Tap “Set as current” on the term that is running now."],tip:"",video:V},
-{id:"classes",group:"School Setup",title:"Classes setup",imgs:["classes"],
- intro:"Add the classes in your school, from KG to Primary, for a session and term.",
- steps:["Go to More → Classes Setup.","Tap + to add a class, or Import CSV to add many at once.","Each class shows the session and term it belongs to.","Edit or delete a class with the pencil and bin icons."],tip:"",video:V},
-{id:"schedule",group:"School Setup",title:"School schedule",imgs:["school-schedule"],
- intro:"Tell the app when school opens and closes so it can flag late arrivals and early leaves automatically.",
- steps:["Go to More → School Schedule.","Set School opens, Late after (arrivals after this are LATE), Early leave before (departures before this are EARLY LEAVE) and School closes.","Set the Term start date. The app uses it to show Week N · Day M on the dashboard."],tip:"",video:V},
-{id:"staff",group:"School Setup",title:"Staff accounts",imgs:["staff-accounts"],
- intro:"Give every staff member their own account and role, so every action is recorded against a name.",
- steps:["Go to More → Staff Accounts.","Tap + to add a person and choose their role, for example School Administrator, Gate Officer or Classroom Teacher.","Tap the pencil to edit a staff member."],
- tip:"<b>Tip:</b> The gate officer on duty is shown at the top of the Gate Activity screen.",video:V},
-{id:"settings",group:"School Setup",title:"System settings",imgs:["system-settings"],
- intro:"Control security photos, spoken alerts and see how much storage the app uses.",
- steps:["Go to More → System Settings.","Security – Camera Evidence: switch on “Capture photo on PIN attempts” and set how many days photos are kept. Older photos are deleted automatically.","Announcements: choose whether the phone also speaks check-in and pick-up. Hardware audio units still play either way.","Storage shows the size of the database and evidence photos."],tip:"",video:V},
+/* ---------------- HOTEL SETUP ---------------- */
+{id:"settings",group:"Hotel Setup",title:"Hotel settings",imgs:["settings"],
+ intro:"Your hotel’s name, phone and address. Guests see these details, and your name appears on every QR room card.",
+ steps:["Open the ☰ menu and choose <b>Hotel Settings</b>.","On the <b>General</b> tab, enter the hotel name, phone number and address.","Latitude and longitude are captured automatically. You don’t need to type them.","Use the <b>Branding</b> tab to set up how your hotel looks to guests.","Use the <b>Departments</b> tab to create departments such as Reception. You will use them when you add staff.","Save your changes."],
+ tip:"<b>Tip:</b> Fill in the General tab before you print QR cards so the right name appears on them.",video:V},
+{id:"rooms",group:"Hotel Setup",title:"Add and manage rooms",imgs:["rooms"],
+ intro:"Add every room in your hotel. Guests can see which rooms are available, their type, price and capacity.",
+ steps:["Open the ☰ menu and choose <b>Room Management</b>.","Tap <b>+ Add Room</b> and enter the room’s number, floor, type and price.","Use the <b>All Floors</b> and <b>All Status</b> filters to find a room quickly.","Each room card shows its number, type, floor, price and status. A green AVAILABLE badge means it is free.","Tap <b>Edit</b> to change a room, or <b>Delete</b> to remove it."],
+ tip:"<b>Tip:</b> Keep each room’s status accurate. Guests see availability when they browse your hotel.",video:V},
+{id:"staff",group:"Hotel Setup",title:"Staff, departments and roles",imgs:["staff"],
+ intro:"Add the people who will answer guests and respond to emergencies.",
+ steps:["Open the ☰ menu and choose <b>Staff Management</b>.","Use the <b>Staff</b>, <b>Departments</b> and <b>Roles</b> tabs to organise your team.","Tap <b>+ Add Staff</b> and enter their details, role and department.","Staff who should answer emergencies show a <b>RESPONDER</b> badge. The counter at the top shows how many responders you have.","A green <b>ACTIVE</b> badge means the person’s account is switched on.","Search by name, email or role, or filter by department and status. Tap <b>Edit</b> or <b>Delete</b> to make changes."],
+ tip:"<b>Tip:</b> Make sure at least one person on every shift is an emergency responder.",video:V},
+{id:"qr-cards",group:"Hotel Setup",title:"QR room cards",imgs:["qr-cards"],
+ intro:"Each room gets its own printable card with a QR code. Guests scan it to connect to your hotel.",
+ steps:["Open the ☰ menu and choose <b>QR Code Room Cards</b>.","Tap <b>Generate All</b> to create a card for every room.","The counters at the top show Rooms, Active, QR Done and Vacant.","Each card shows your hotel’s name, the room number, a QR code and a web address underneath.","Tap <b>Download All</b> or <b>Print All</b>. Use the search box or room filter to find a single card.","Place one printed card in each room where guests will see it."],
+ tip:"<b>Tip:</b> The web address on each card lets guests connect even if their camera can’t scan the code.",video:V},
 
-{id:"students",group:"Students & Parents",title:"Managing students",imgs:["students"],
- intro:"Your student list. Each entry shows the child’s name, admission number and class.",
- steps:["Tap Students at the bottom of the screen.","Use the search box to find a student by name.","Tap + to add a student, or the pencil to edit one.","Delete a student with the bin icon."],tip:"",video:V},
-{id:"parents",group:"Students & Parents",title:"Parents and guardians",imgs:["parents-guardians"],
- intro:"Register everyone who is allowed to bring or collect a child, with their relationship, phone number and PIN.",
- steps:["Go to More → Parents / Guardians.","Tap + to add a parent or guardian: name, relationship (Parent, Uncle…), phone number and photo.","A green PIN ✓ means the guardian has a PIN. Use the key icon to manage it.","Link each guardian to the children they may collect."],
- tip:"<b>Tip:</b> A child can have up to 4 authorised collectors, each with their own photo, PIN and fingerprint.",video:V},
+/* ---------------- ENGAGE GUESTS ---------------- */
+{id:"promotions",group:"Engage Guests",title:"Promotional messages",imgs:["promotions"],
+ intro:"Send offers and announcements to your guests.",
+ steps:["Open the ☰ menu and choose <b>Promotional Messages</b>.","Tap <b>+ New Message</b> to write a promotion.","The <b>Messages</b> tab lists what you have created. Use the status filter to narrow the list, and Reset to clear it.","The <b>Subscribers</b> tab shows who receives your messages.","The <b>Analytics</b> tab shows how your messages perform."],
+ tip:"",video:V},
 
-{id:"pin-pickup",group:"Gate & Pickup",title:"Check in and pick up with a PIN",imgs:[],
- intro:"The gate officer finds the child, taps the parent and the parent enters their PIN while the camera captures a photo. The same steps are used for arrival and pick-up.",
- steps:["Search the student’s name and tap it.","The student’s guardians appear with their pictures. Tap the parent who is present.","A full-screen keypad opens with the camera on at the top. The parent enters their PIN.","The app records the arrival or pick-up and a voice message announces it, for example “Àgha has brought Biola to school.”"],
- tip:"<b>See it:</b> an animated version is on the <a href='index.html#demo' style='color:#FFA000'>main page</a>.",video:V},
-{id:"fingerprint-pickup",group:"Gate & Pickup",title:"Check in and pick up with a fingerprint",imgs:[],
- intro:"With a fingerprint gate terminal, parents check in and out with one touch. No typing is needed.",
- steps:["The parent places a finger on the gate terminal.","The scanner matches the fingerprint and shows the result.","The terminal sends it to the phone over the school Wi-Fi.","The app records the check-in or pick-up and the voice message plays."],
- tip:"<b>Note:</b> The terminal appears under Devices after it connects for the first time. Parents must be enrolled with a fingerprint first. Animated version on the <a href='index.html#bio' style='color:#FFA000'>main page</a>.",video:V},
-{id:"gate-activity",group:"Gate & Pickup",title:"Gate activity log",imgs:["gate-activity"],
- intro:"A record of everything that happened at the gate on a given day.",
- steps:["Tap Gate at the bottom of the screen.","Use the arrows at the top to change the date.","Switch between In, Out and PIN / Audit using the tabs. The number shows how many entries there are.","Each entry shows the child’s photo, admission number, who brought or collected them, the source (PIN or fingerprint) and the time."],tip:"",video:V},
+/* ---------------- FOR GUESTS ---------------- */
+{id:"directory",group:"For Guests",title:"Find a hotel",imgs:["guest-directory"],
+ intro:"The guest directory lists hotels on Voddic Connect. Share this page with guests who want to find your hotel.",
+ steps:["Open the Voddic Connect home page.","Tap <b>Hotels Near Me</b> to see hotels close to you, or type a name or city in the search box.","Each hotel card shows its photo, rating, city, address and how many rooms are available.","Use the <b>Rooms</b>, <b>Reviews</b> and <b>Scan</b> shortcuts at the bottom of a card."],
+ tip:"",video:V},
+{id:"guest-rooms",group:"For Guests",title:"View rooms and contact the hotel",imgs:["guest-rooms"],
+ intro:"Guests can check live availability and get in touch without leaving the page.",
+ steps:["On a hotel card, tap <b>Rooms</b>.","The top of the window shows how many rooms are available out of the total.","Each room shows its number, type, number of guests, price and an <b>Available</b> badge.","Tap <b>Call Reception</b> to phone the hotel, or <b>Email Hotel</b> to send a message."],
+ tip:"<b>Tip:</b> Guests see the phone number you saved in <a href='#/settings'>Hotel settings</a>.",video:V},
+{id:"scan",group:"For Guests",title:"Scan the QR code in the room",imgs:["guest-scan"],
+ intro:"When a guest scans the card in their room, they connect to your hotel’s services.",
+ steps:["Open the phone’s camera or tap <b>Scan</b> on the hotel’s card.","Allow camera access if the phone asks.","Position the QR code inside the frame on the screen.","The screen shows the current hotel at the top so the guest can confirm it’s the right one.","No camera? Type the room number into the box and tap <b>Enter Room</b>."],
+ tip:"<b>See it:</b> an animated version is in the <a href='index.html#demo'>live demo</a> on the main page.",video:V},
 
-{id:"devices",group:"Announcements & Devices",title:"Devices",imgs:["devices"],
- intro:"One place to see every audio unit and biometric gate connected to your school.",
- steps:["Go to More → Devices.","Audio Units shows each unit with its online status, IP address and last heartbeat.","Biometric Gates appear here automatically when an ESP32 gate unit connects for the first time.","A grey dot means the device is offline. Check its power and Wi-Fi."],tip:"",video:V},
-{id:"audio-units",group:"Announcements & Devices",title:"Audio units",imgs:["audio-units"],
- intro:"Manage the wireless speakers that play announcements around the school.",
- steps:["Go to More → Audio Units.","Tap + to add a unit.","Each unit shows its name, ID, status, which announcements it plays and its volume.","Use the key icon for the unit’s security settings."],
- tip:"<b>Tip:</b> A school can have up to 5 audio units.",video:V},
-{id:"voice-recordings",group:"Announcements & Devices",title:"Voice recordings",imgs:["voice-recordings"],
- intro:"Announcements are built from short voice clips, such as phrases and student names, recorded in your school’s voice.",
- steps:["Go to More → Announcements → Voice Recordings.","Use the filters (All, Missing, Done, Phrases, Students) to find clips.","Tap ▶ to listen, the microphone to record, or the pencil to edit the text.","Tap TTS All to generate missing clips automatically."],tip:"",video:V},
-{id:"announcements",group:"Announcements & Devices",title:"Announcements",imgs:["announcements"],
- intro:"Schedule recurring announcements and play ready-made templates with one tap.",
- steps:["Go to More → Announcements.","Scheduled Announcements run automatically at a set time on the days you choose. Use the switch to turn one on or off.","Templates (such as Afternoon Pickup, Break Time, Lunch Time) play when you tap ▶.","Tap + to create your own."],tip:"",video:V},
-
-{id:"classroom-overview",group:"Monitoring & Reports",title:"Classroom overview",imgs:["classroom-overview","class-live-status"],
- intro:"See every class at a glance and drill into one class for a live headcount.",
- steps:["Open Classroom Overview from the dashboard.","Each class card shows the number of students and three counters: green In School, orange Absent, red Out.","Tap a class to see every child with a status dot: In School, Absent or Out."],tip:"",video:V},
-{id:"daily-export",group:"Monitoring & Reports",title:"Daily export and close",imgs:["daily-export"],
- intro:"End each school day by exporting an Excel file and closing the day. Records are never deleted.",
- steps:["Go to More → Daily Export.","Tap “Close today and export Excel”. Missing students are marked ABSENT and today’s Excel file is created.","Optionally switch on “Dashboard state” to show zeroes for a fresh start. It switches itself back at midnight.","Missed yesterday? Tap “Close yesterday and export Excel”."],
- tip:"<b>Tip:</b> Copy the Excel files to a USB drive or email them as a backup.",video:V},
-{id:"attendance-report",group:"Monitoring & Reports",title:"Attendance report",imgs:["attendance-report"],
- intro:"Create an attendance report for any date range, for a class or for one student. Useful for parent requests and audits.",
- steps:["Go to More → Attendance Report.","Pick a quick preset (Today, Yesterday, This week…) or choose your own start and end dates.","Optionally choose a class and a student.","Generate the report."],tip:"",video:V},
-{id:"term-report",group:"Monitoring & Reports",title:"Term report",imgs:["term-report"],
- intro:"A full term register per class, saved as an Excel file.",
- steps:["Go to More → Term Report.","Choose the Academic Session and the Term.","Tap Generate Term Report.","Find the .xlsx file in Downloads/SchoolReports."],
- tip:"<b>What’s inside:</b> one row per student, one column per school day with IN time, OUT time, who dropped off and who picked up, plus days present, days absent, total hours and attendance %.",video:V},
-{id:"analytics",group:"Monitoring & Reports",title:"Reports and analytics",imgs:["reports-analytics"],
- intro:"Quick numbers and charts to spot patterns.",
- steps:["Open Reports from the dashboard.","The tiles show Present, Absent, Late, Early and Out counts for the day.","The Last 7 days trend chart shows present and absent over the week.","Scroll down for the breakdown chart."],tip:"",video:V},
-
-{id:"lost-phone",group:"Help",title:"Lost phone or app",imgs:[],
- intro:"Phones get lost, broken or reset. Here is how to get your school running again.",
- steps:["Download the APK again on the new phone and install it as before.","Use your daily Excel backups in Downloads/SchoolReports. Keep copies on USB or email so records are never lost with the phone.","Reconnect the phone to the school Wi-Fi so it can reach your gates and speakers.","Need help? Contact the SchoolGuard team."],tip:"",video:V}
+/* ---------------- HELP ---------------- */
+{id:"help-scan",group:"Help",title:"A guest can’t scan the code",imgs:["guest-scan"],
+ intro:"Most scanning problems are quick to fix.",
+ steps:["Ask the guest to allow camera access when the phone asks.","Make sure the whole QR code is inside the frame and the room is well lit.","Use the web address printed under the QR code on the card.","Or open the scan screen and type the room number, then tap <b>Enter Room</b>.","If it still doesn’t work, the guest can use <b>Call Reception</b> from the hotel’s card."],
+ tip:"",video:V},
+{id:"help-support",group:"Help",title:"Getting more help",imgs:[],
+ intro:"If something in this tutorial doesn’t match what you see, or you need help setting up your hotel, contact the Voddic Connect team.",
+ steps:["Note the screen you were on and what you expected to happen.","Take a screenshot if you can.","Send both to the Voddic team."],
+ tip:"",video:V}
 ];
 /* ===================== END OF TOPICS ===================== */
 
 (function(){
 var $=function(s){return document.querySelector(s)};
-function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
 function ytId(u){var m=(u||"").match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([A-Za-z0-9_-]{11})/);return m&&!/^X+$/i.test(m[1])?m[1]:null}
 var groups=[];TOPICS.forEach(function(t){if(groups.indexOf(t.group)<0)groups.push(t.group)});
-function menu(q){q=(q||"").toLowerCase();var h="";groups.forEach(function(g){var it=TOPICS.filter(function(t){return t.group==g&&(!q||t.title.toLowerCase().indexOf(q)>-1)});if(!it.length)return;h+='<div class="gt">'+esc(g)+'</div>'+it.map(function(t){return '<a class="it" href="#/'+t.id+'" data-id="'+t.id+'">'+esc(t.title)+'</a>'}).join("")});$("#menu").innerHTML=h||'<p class="gt">No topics found</p>';mark()}
+function menu(q){q=(q||"").toLowerCase().trim();var h="";groups.forEach(function(g){var it=TOPICS.filter(function(t){return t.group==g&&(!q||t.title.toLowerCase().indexOf(q)>-1||(t.intro||"").toLowerCase().indexOf(q)>-1)});if(!it.length)return;h+='<div class="gt">'+esc(g)+'</div>'+it.map(function(t){return '<a class="it" href="#/'+esc(t.id)+'" data-id="'+esc(t.id)+'">'+esc(t.title)+'</a>'}).join("")});$("#menu").innerHTML=h||'<p class="gt">No topics found</p>';mark()}
 var cur=0;
 function mark(){document.querySelectorAll("#menu a.it").forEach(function(a){a.classList.toggle("on",a.dataset.id==TOPICS[cur].id)})}
 function show(){var i=TOPICS.map(function(t){return t.id}).indexOf((location.hash.match(/^#\/(.+)$/)||[])[1]);cur=i<0?0:i;var t=TOPICS[cur],id=ytId(t.video);
-var phs=(t.imgs&&t.imgs.length)?'<div class="phs">'+t.imgs.map(function(n){return '<div class="ph"><img src="assets/shots/'+n+'.jpg" alt="'+esc(t.title)+' screen"></div>'}).join("")+'</div>':"";
+var phs=(t.imgs&&t.imgs.length)?'<div class="phs">'+t.imgs.map(function(n){return '<div class="ph"><img src="assets/shots/'+esc(n)+'.jpg" alt="'+esc(t.title)+' screen" loading="lazy"></div>'}).join("")+'</div>':"";
 var p=TOPICS[cur-1],n=TOPICS[cur+1];
+var raw=t.video&&!/X{11}/i.test(t.video)?t.video:"";
+var vl=id?'<p class="vl">🎬 <a href="'+esc(t.video)+'" target="_blank" rel="noopener">Watch on YouTube</a></p>':(raw?'<p class="vl">🎬 <a href="'+esc(raw)+'" target="_blank" rel="noopener">'+esc(raw)+'</a></p>':'<div class="novl"></div>');
 $("#art").innerHTML='<div class="bc"><b>'+esc(t.group)+'</b> › '+esc(t.title)+'</div><h1>'+esc(t.title)+'</h1><p class="in">'+t.intro+'</p>'+
 '<div class="row'+(phs?'':' nop')+'"><div>'+(t.steps&&t.steps.length?'<h2>Steps</h2><ol class="st">'+t.steps.map(function(s){return '<li><span>'+s+'</span></li>'}).join("")+'</ol>':"")+(t.tip?'<div class="tip">'+t.tip+'</div>':"")+'</div>'+phs+'</div>'+
-'<h2>Video</h2><div class="vid" id="vid"><div class="vp"><button class="play" id="play" aria-label="Play video">▶</button><span>'+(id?"Watch the video":"Video coming soon")+'</span></div></div><p class="vl">🎬 <a href="'+esc(t.video)+'" target="_blank" rel="noopener">'+esc(t.video)+'</a></p>'+
-'<div class="pn">'+(p?'<a href="#/'+p.id+'"><small>← Previous</small><b>'+esc(p.title)+'</b></a>':'<span><small>← Previous</small><b>Start of tutorial</b></span>')+(n?'<a class="nx" href="#/'+n.id+'"><small>Next →</small><b>'+esc(n.title)+'</b></a>':'<span class="nx"><small>Next →</small><b>End of tutorial</b></span>')+'</div>';
+'<h2>Video</h2><div class="vid" id="vid"><div class="vp"><button class="play" id="play" aria-label="Play video"'+(id?'':' disabled')+'>▶</button><span>'+(id?"Watch the video":"Video coming soon")+'</span></div></div>'+vl+
+'<div class="pn">'+(p?'<a href="#/'+esc(p.id)+'"><small>← Previous</small><b>'+esc(p.title)+'</b></a>':'<span><small>← Previous</small><b>Start of tutorial</b></span>')+(n?'<a class="nx" href="#/'+esc(n.id)+'"><small>Next →</small><b>'+esc(n.title)+'</b></a>':'<span class="nx"><small>Next →</small><b>End of tutorial</b></span>')+'</div>';
 $("#play").onclick=function(){if(id)$("#vid").innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" title="'+esc(t.title)+'" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'};
-document.title=t.title+" – SchoolGuard Tutorial";mark();closeM();window.scrollTo(0,0);
+document.title=t.title+" – Voddic Connect Tutorial";mark();closeM();window.scrollTo(0,0);
 var a=document.querySelector("#menu a.on");if(a&&a.scrollIntoView)a.scrollIntoView({block:"nearest"})}
 function openM(){$("#side").classList.add("open");$("#ov").classList.add("on");$("#bg").setAttribute("aria-expanded","true")}
 function closeM(){$("#side").classList.remove("open");$("#ov").classList.remove("on");$("#bg").setAttribute("aria-expanded","false")}
