@@ -122,12 +122,25 @@ h1{font-size:clamp(2.4rem,5vw,4rem);font-weight:900;line-height:1.07;letter-spac
 footer{border-top:1px solid var(--bd);padding:32px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:.78rem;color:var(--gray)}footer a{color:var(--gray);text-decoration:none;margin-right:16px}footer a:hover{color:#fff}
 .rv{opacity:0;transform:translateY(24px);transition:opacity .65s,transform .65s}.rv.v{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+button.ol{background:none;font:700 1rem var(--f);cursor:pointer}
+.ea{border-color:rgba(53,208,127,.45);color:var(--green)}.ea:hover{background:rgba(53,208,127,.1)}
+.md{position:fixed;inset:0;z-index:300;background:rgba(5,9,18,.88);display:none;align-items:center;justify-content:center;padding:20px;overflow:auto}.md.on{display:flex}
+.mc{background:var(--navy2);border:1px solid var(--bd);border-radius:20px;padding:30px;width:100%;max-width:560px;position:relative;margin:auto;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.mc h3{font-size:1.4rem;letter-spacing:-.5px;margin-bottom:6px;padding-right:44px}.mc>div>p,.mc form>p{color:var(--gray);font-size:.88rem;line-height:1.6;margin-bottom:18px}
+.mx{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:#fff;font-size:1.3rem;cursor:pointer}
+.fg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.ff{display:flex;flex-direction:column;min-width:0}.ff.w{grid-column:1/-1}.ff label{font-weight:700;font-size:.8rem;margin-bottom:6px}
+.ff input,.ff select,.ff textarea{width:100%;min-width:0;min-height:46px;padding:10px 12px;border-radius:10px;border:1px solid var(--bd);background:#0b1426;color:#fff;font:inherit}.ff textarea{min-height:84px;resize:vertical}.ff input:focus,.ff select:focus,.ff textarea:focus{outline:2px solid var(--amber);outline-offset:1px}.ff.bad input,.ff.bad select{border-color:#ff8a80}.er{color:#ff8a80;font-size:.76rem;margin-top:4px}
+.hn{position:absolute;left:-9999px}
+.mc .dl{width:100%;justify-content:center;border:0;cursor:pointer;margin-top:18px}.mc .dl[disabled]{opacity:.7;cursor:default}.fe{color:#ff8a80;font-size:.84rem;margin-top:12px;text-align:center}
+.thx{text-align:center;padding:20px 0}.thx .big{font-size:3rem}.thx h3{margin:10px 0;padding:0}.thx p{color:var(--gray);line-height:1.6}.tst{background:rgba(255,160,0,.1);border:1px solid rgba(255,160,0,.3);border-radius:10px;padding:10px 12px;font-size:.78rem;margin-top:14px;color:#ffd180;text-align:left}
+.spn{width:18px;height:18px;border:3px solid rgba(0,0,0,.25);border-top-color:#1a1200;border-radius:50%;animation:rot .7s linear infinite;margin-right:8px;display:inline-block;vertical-align:middle}@keyframes rot{to{transform:rotate(360deg)}}
+@media(max-width:560px){.fg{grid-template-columns:minmax(0,1fr)}.mc{padding:24px 16px}}
 html{overflow-x:clip}
 </style>
 </head>
 <body id="top">
 <nav><a class="logo" href="#top" aria-label="Voddic Connect home"><div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFA000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M8 14.5a4 4 0 0 1 8 0M7 14.5h10M12 8.5v1.2"/></svg></div><span>Voddic <b>Connect</b></span></a>
-<div class="nl"><a href="#purpose">Why Connect</a><a href="#tour">App Tour</a><a href="#demo">Live Demo</a><a href="#directory" data-link="directory">Find a Hotel</a><a href="#hotels">For Hotels</a><a href="tutorial.html">Tutorial</a><a href="#faq">FAQ</a><a class="sm" data-link="register" href="https://connect.voddic.com.ng/auth/signup.htm">Register Your Hotel</a></div></nav>
+<div class="nl"><a href="#purpose">Why Connect</a><a href="#tour">App Tour</a><a href="#demo">Live Demo</a><a href="#directory" data-link="directory">Find a Hotel</a><a href="#hotels">For Hotels</a><a href="tutorial.html">Tutorial</a><a href="#faq">FAQ</a><a class="sm" data-link="register" href="https://connect.voddic.com.ng/">Register Your Hotel</a></div></nav>
 
 <!-- HERO -->
 <section class="hero"><div style="position:relative;z-index:1">
@@ -135,8 +148,9 @@ html{overflow-x:clip}
 <h1>One Scan.<br><span class="a">Every Service.</span><br><span class="g">No App.</span></h1>
 <p class="sub">Voddic Connect puts reception, housekeeping and emergency help on a QR code in every room. Guests just scan. Your team manages rooms, staff and alerts from one dashboard.</p>
 <div class="pills"><div class="pill"><i style="background:var(--green)"></i>No app install</div><div class="pill"><i style="background:var(--amber)"></i>QR code in every room</div><div class="pill"><i style="background:var(--red)"></i>Emergency alerts</div><div class="pill"><i style="background:var(--blue)"></i>Your hotel’s branding</div></div>
-<div class="cta"><a class="dl" data-link="register" href="https://connect.voddic.com.ng/auth/signup.html/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6"/></svg>Register Your Hotel</a><a class="ol" data-link="directory" href="https://connect.voddic.com.ng/auth/signup.html/">🔎 Find a Hotel</a></div>
-<p class="meta">Guests need no account · Works in any phone browser · Built by Voddic</p></div>
+<div class="cta"><a class="dl" data-link="register" href="https://connect.voddic.com.ng/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6"/></svg>Register Your Hotel</a><a class="ol" data-link="directory" href="https://connect.voddic.com.ng/">🔎 Find a Hotel</a></div>
+<p class="meta">Guests need no account · Works in any phone browser · Built by Voddic LTD.</p>
+<div class="cta" style="margin-top:18px"><button type="button" class="ol ea" data-early aria-haspopup="dialog">🚀 Early Access</button></div></div>
 <div class="hp" aria-hidden="true"><div class="ph l"><div class="im s-dash"></div></div><div class="ph r"><div class="im s-qr"></div></div><div class="ph m"><div class="im s-dir"></div></div></div></section>
 
 <div class="stats"><div class="stat rv"><b>0</b><small>APP INSTALLS FOR GUESTS</small></div><div class="stat rv"><b>1</b><small>QR CODE PER ROOM</small></div><div class="stat rv"><b>Live</b><small>ROOM AVAILABILITY</small></div><div class="stat rv"><b>1 tap</b><small>TO CALL RECEPTION</small></div></div>
@@ -223,6 +237,20 @@ html{overflow-x:clip}
 
 <footer><div><b style="color:#fff">Voddic <span class="a">Connect</span></b> · Hotel digital assistance</div><div><a href="#top">Home</a><a href="tutorial.html">Tutorial</a><a href="#directory" data-link="directory">Guest Directory</a><a href="#hotels" data-link="register">Register Your Hotel</a></div><div>© 2026 Voddic Ltd, Lagos, Nigeria.</div></footer>
 
+<div class="md" id="md" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="mc"><button class="mx" id="mx" type="button" aria-label="Close">×</button>
+<div id="mf"><form id="ef" novalidate><h3 id="mt">Get early access</h3><p>Tell us about your hotel and we’ll contact you when Voddic Connect opens for your area. It takes about a minute.</p>
+<input class="hn" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"><input type="hidden" name="_subject" id="esub" value="New Voddic Connect early access request"><input type="hidden" name="source" value="early-access">
+<div class="fg"><div class="ff w"><label for="e1">Hotel name *</label><input id="e1" name="hotel" autocomplete="organization"></div>
+<div class="ff"><label for="e2">Type of property</label><select id="e2" name="property_type"><option>Hotel</option><option>Guest house</option><option>Resort</option><option>Apartment / Shortlet</option><option>Other</option></select></div>
+<div class="ff"><label for="e3">Number of rooms</label><select id="e3" name="rooms"><option>1-10</option><option>11-30</option><option>31-60</option><option>61-100</option><option>100+</option></select></div>
+<div class="ff"><label for="e4">City / town *</label><input id="e4" name="city"></div><div class="ff"><label for="e5">State / region *</label><input id="e5" name="state"></div>
+<div class="ff w"><label for="e6">Hotel address</label><input id="e6" name="address" autocomplete="street-address"></div>
+<div class="ff"><label for="e7">Your full name *</label><input id="e7" name="contact" autocomplete="name"></div><div class="ff"><label for="e8">Your role</label><select id="e8" name="role"><option>Owner</option><option>General manager</option><option>Front desk / Reception</option><option>IT / Operations</option><option>Other</option></select></div>
+<div class="ff"><label for="e9">Phone / WhatsApp *</label><input id="e9" name="phone" type="tel" autocomplete="tel" placeholder="+234…"></div><div class="ff"><label for="e10">Email *</label><input id="e10" name="email" type="email" autocomplete="email"></div>
+<div class="ff w"><label for="e11">Anything else we should know? (optional)</label><textarea id="e11" name="notes"></textarea></div></div>
+<button class="dl" id="esb" type="submit">Request Early Access</button><div class="fe" id="efe" role="alert"></div></form></div>
+<div class="thx" id="et" style="display:none"><div class="big">✅</div><h3>Thank you! You’re on the list.</h3><p>We’ve received your hotel’s details and will be in touch soon.</p><div class="tst" id="etst" style="display:none"></div><p style="margin-top:18px"><button class="ol" type="button" id="ecl">Close</button></p></div></div></div>
+
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Screen preview"><div class="ph"><div class="im" id="li" role="img" aria-label="Screen preview"></div></div><div class="lt"><h3 id="lh"></h3><p id="lp"></p><button class="lx" id="lc">Close</button></div></div>
 
 <script>
@@ -281,6 +309,32 @@ play(manual?m:(m=="em"?"sv":"em"))}
 $("#seg").addEventListener("click",function(e){var b=e.target.closest("button");if(b){manual=true;play(b.dataset.m)}});
 $("#rp").onclick=function(){manual=true;play(mode)};
 new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!seen){seen=true;play(mode)}}else{run++;seen=false}})},{threshold:.3}).observe($("#demo"));
+})();
+</script>
+<script>
+/* ===== EDIT EARLY-ACCESS FORM HERE ===== */
+var FORM_ENDPOINT="https://formspree.io/f/xnjepyyw";   /* put your real Formspree link here */
+/* ===== END EDIT ===== */
+(function(){
+var $=function(s){return document.querySelector(s)},md=$("#md"),ef=$("#ef"),last=null;
+function openF(){last=document.activeElement;$("#mf").style.display="";$("#et").style.display="none";md.classList.add("on");document.body.style.overflow="hidden";setTimeout(function(){$("#e1").focus()},50)}
+function closeF(){md.classList.remove("on");document.body.style.overflow="";if(last&&last.focus)last.focus()}
+document.querySelectorAll("[data-early]").forEach(function(b){b.addEventListener("click",openF)});
+$("#mx").onclick=closeF;$("#ecl").onclick=closeF;md.addEventListener("click",function(e){if(e.target===md)closeF()});
+document.addEventListener("keydown",function(e){if(e.key=="Escape"&&md.classList.contains("on"))closeF()});
+function bad(id,msg){var f=$("#"+id).parentNode,n=f.querySelector(".er");if(!n){n=document.createElement("div");n.className="er";f.appendChild(n)}n.textContent=msg||"";f.classList.toggle("bad",!!msg);return !msg}
+ef.addEventListener("submit",async function(e){e.preventDefault();var ok=true,v=function(id){return $("#"+id).value.trim()};
+["e1","e4","e5","e7"].forEach(function(id){ok=bad(id,v(id)?"":"Required")&&ok});
+ok=bad("e9",/^\+?[0-9\s-]{8,16}$/.test(v("e9"))?"":"Enter a valid phone number")&&ok;
+ok=bad("e10",/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("e10"))?"":"Enter a valid email")&&ok;if(!ok)return;
+$("#esub").value="New Voddic Connect early access - "+v("e1");$("#efe").textContent="";
+var b=$("#esb");b.disabled=true;b.innerHTML='<span class="spn"></span>Submitting…';var demo=FORM_ENDPOINT.indexOf("YOUR_FORM_ID")>-1;
+try{if(!demo){var r=await fetch(FORM_ENDPOINT,{method:"POST",body:new FormData(ef),headers:{Accept:"application/json"}});if(!r.ok)throw 0}
+$("#mf").style.display="none";$("#et").style.display="";
+if(demo){$("#etst").style.display="";$("#etst").textContent="Test mode: the form is not connected yet, so this request was not saved. Set FORM_ENDPOINT in the page to your Formspree link."}
+ef.reset()}
+catch(x){$("#efe").textContent="Something went wrong. Please check your connection and try again."}
+b.disabled=false;b.innerHTML="Request Early Access"});
 })();
 </script>
 </body>
